@@ -1,6 +1,6 @@
 import { FaHome } from "react-icons/fa"
 import Link from 'next/link'
-import styles from "./iconLinks.module.css"
+import styles from "../styles/iconLinks.module.css"
 
 export default function IconLinks() {
   return (

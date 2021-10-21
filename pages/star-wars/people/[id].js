@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Layout from '../../../components/layout'
 import styles from '../../../styles/Home.module.css'
 import Card from '../../../components/card'
@@ -10,12 +10,17 @@ import {
   getAllVehicleData,
   getAllStarshipData
 } from '../../../lib/star-wars'
+import {
+  getCharacterSpecies,
+  getCharacterFilms,
+  getCharacterStarships,
+  getCharacterVehicles
+} from '../../../lib/card-data-helpers'
 import * as _ from 'lodash'
 
+
 export const getStaticProps = async (context) => {
-  console.log('id', context.params.id)
   const profile = await getCharacterData(context.params.id);
-  console.log(profile)
   const speciesData = await getAllSpeciesData();
   const filmData = await getAllFilmData();
   const vehicleData = await getAllVehicleData();
@@ -25,12 +30,11 @@ export const getStaticProps = async (context) => {
       profile: profile,
       species: speciesData,
       films: filmData,
-      vehicles: vehicleData,
       starships: starshipData,
+      vehicles: vehicleData,
     }
   }
 }
-
 
 export async function getStaticPaths() {
   const paths = await getAllProfileIds();
@@ -53,23 +57,23 @@ async function getAllProfileIds() {
   })
 }
 
-
-export default function Profile({ profile, species, vehicles, starships, films }) {
+export default function Profile({ profile, species, films, starships, vehicles }) {
   let character = profile
-  console.log(character);
-  // console.log(character.films)
-  //console.log(species[2].name)
-  //console.log(character.species[0].split('/')[5]);
-  // {
-  //   character.species.length > 0 ?
-  //     <li>
-  //       {species[(character.species[0].split('/')[5] - 1)].name}
-  //     </li> : null
-  // }
+  const speciesStr = getCharacterSpecies(character, species);
+  const filmsStr = getCharacterFilms(character, films);
+  const starshipsStr = getCharacterStarships(character, starships);
+  const vehiclesStr = getCharacterVehicles(character, vehicles);
+
   return (
     <Layout>
       <main className={styles.main}>
-        <Card character={character} />
+        <Card
+          character={character}
+          species={speciesStr}
+          films={filmsStr}
+          starships={starshipsStr}
+          vehicles={vehiclesStr}
+        />
       </main>
     </Layout>
   )

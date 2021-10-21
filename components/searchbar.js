@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
-import styles from './searchbar.module.css'
+import styles from '../styles/searchbar.module.css'
 import Router from 'next/router'
 
 export default function Searchbar({ names }) {

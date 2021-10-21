@@ -93,19 +93,11 @@
 
 .card p {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-.card p {
   font-size: 1.5rem;
+  line-height: 1.5;
   align-self: flex-end;
 }
+
 .nextButton {
   padding: .5rem 1rem;
   background: #0070f3;

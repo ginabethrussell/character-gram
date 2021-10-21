@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import styles from './layout.module.css'
+import styles from '../styles/layout.module.css'
 import Searchbar from './searchbar'
 import IconLinks from './iconLinks'
 
@@ -27,15 +27,24 @@ export default function Layout({ children, home, names }) {
           </Link>
         </div>
       )}
-      {home && (
-        <footer className={styles.footer}>
+      <footer className={styles.footer}>
+        {home ? (
           <p>
             Lottie Animation by
             <a href="https://lottiefiles.com/user/262773"> Sam Salkin</a>
+          </p>) : (
+          <p>
+            Image by
+            <a href="https://pixabay.com/users/wanderercreative-855399/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=973460">
+              {" "}Stephanie Edwards
+            </a> from
+            <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=973460">
+              {" "}Pixabay
+            </a>
           </p>
-        </footer>
-      )
-      }
+        )
+        }
+      </footer>
     </div>
   )
 }
