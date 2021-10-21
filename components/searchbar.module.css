@@ -1,0 +1,30 @@
+.searchbarWrapper {
+  display: flex;
+  width: 50%;
+}
+
+.searchButton {
+  padding: 5px;
+  width: 25%;
+  background: #0070f3;
+  color: white;
+  font-size: 1rem;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+.searchButton:hover {
+  background-color: #2e2e2e;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .searchbarWrapper {
+    order: 3;
+    margin-bottom: 1rem;
+  }
+}
