@@ -1,11 +1,14 @@
-import Link from 'next/link'
-import Lottie from 'react-lottie'
-import animationData from '../lotties/baby-yoda'
-import Layout from '../components/layout'
-import styles from '../styles/Home.module.css'
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import Lottie from 'react-lottie';
+
+import animationData from '../lotties/baby-yoda';
+import Layout from '../components/layout';
+import styles from '../styles/Home.module.css';
 import {
   getAllCharacterData,
-} from '../lib/star-wars'
+} from '../lib/star-wars';
+import { useAppContext } from '../context/state';
 
 export const getStaticProps = async () => {
   const profileData = await getAllCharacterData();
@@ -14,7 +17,7 @@ export const getStaticProps = async () => {
     props: {
       profiles: profileData,
     }
-  }
+  };
 }
 
 const defaultOptions = {
@@ -26,16 +29,31 @@ const defaultOptions = {
   }
 };
 
+const createLinkUrl = (profileUrl) => {
+  return `/star-wars/people/${profileUrl.split('/')[5]}`;
+}
+
 export default function Home({ profiles }) {
-  const names = profiles.map(profile => {
-    return {
-      label: profile.name,
-      id: profile.url.split('/')[5].toString()
+  const { state, setState } = useAppContext();
+
+  useEffect(() => {
+    const names = profiles.map(profile => {
+      return {
+        label: profile.name,
+        id: profile.url.split('/')[5].toString()
+      }
+    });
+    let newState = {
+      ...state,
+      'profiles': profiles,
+      'names': names
     }
-  });
+    setState(newState);
+
+  }, [profiles])
 
   return (
-    <Layout home names={names}>
+    <Layout home>
       <main className={styles.main}>
         <section className={styles.banner}>
           <h2 className={styles.title}>
@@ -54,7 +72,7 @@ export default function Home({ profiles }) {
 
         <div className={styles.grid}>
           {profiles.map(profile => (
-            <Link href={`/star-wars/people/${profile.url.split('/')[5]}`} key={profile.url}>
+            <Link href={createLinkUrl(profile.url)} key={profile.url}>
               <div className={styles.card} >
                 <h4 className={styles.name}>{profile.name}</h4>
                 <p>&rarr;</p>
@@ -64,5 +82,5 @@ export default function Home({ profiles }) {
         </div>
       </main>
     </Layout>
-  )
+  );
 }

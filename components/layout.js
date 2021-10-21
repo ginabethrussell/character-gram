@@ -1,10 +1,12 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import styles from '../styles/layout.module.css'
-import Searchbar from './searchbar'
-import IconLinks from './iconLinks'
+import Head from 'next/head';
+import Link from 'next/link';
 
-export default function Layout({ children, home, names }) {
+import styles from '../styles/layout.module.css';
+import Searchbar from './searchbar';
+import IconLinks from './iconLinks';
+
+export default function Layout({ children, home }) {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,9 +16,7 @@ export default function Layout({ children, home, names }) {
       </Head>
       <header className={styles.header}>
         <h1 className={styles.headerTitle}>Charactergram</h1>
-        {home &&
-          <Searchbar names={names} />
-        }
+        <Searchbar />
         <IconLinks />
       </header>
       <main>{children}</main>
@@ -46,5 +46,5 @@ export default function Layout({ children, home, names }) {
         }
       </footer>
     </div>
-  )
+  );
 }

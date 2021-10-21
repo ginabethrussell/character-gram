@@ -1,7 +1,9 @@
-import React from 'react'
-import Layout from '../../../components/layout'
-import styles from '../../../styles/Home.module.css'
-import Card from '../../../components/card'
+import React, { useEffect } from 'react';
+import * as _ from 'lodash';
+
+import styles from '../../../styles/Home.module.css';
+import Card from '../../../components/card';
+import Layout from '../../../components/layout';
 import {
   getCharacterData,
   getAllCharacterData,
@@ -9,15 +11,14 @@ import {
   getAllFilmData,
   getAllVehicleData,
   getAllStarshipData
-} from '../../../lib/star-wars'
+} from '../../../lib/star-wars';
 import {
   getCharacterSpecies,
   getCharacterFilms,
   getCharacterStarships,
   getCharacterVehicles
-} from '../../../lib/card-data-helpers'
-import * as _ from 'lodash'
-
+} from '../../../lib/card-data-helpers';
+import { useAppContext } from '../../../context/state';
 
 export const getStaticProps = async (context) => {
   const profile = await getCharacterData(context.params.id);
@@ -25,6 +26,7 @@ export const getStaticProps = async (context) => {
   const filmData = await getAllFilmData();
   const vehicleData = await getAllVehicleData();
   const starshipData = await getAllStarshipData();
+
   return {
     props: {
       profile: profile,
@@ -33,7 +35,7 @@ export const getStaticProps = async (context) => {
       starships: starshipData,
       vehicles: vehicleData,
     }
-  }
+  };
 }
 
 export async function getStaticPaths() {
@@ -54,15 +56,27 @@ async function getAllProfileIds() {
         "id": profile.url.split('/')[5].toString()
       }
     }
-  })
+  });
 }
 
 export default function Profile({ profile, species, films, starships, vehicles }) {
-  let character = profile
+  const { state, setState } = useAppContext();
+  let character = profile;
   const speciesStr = getCharacterSpecies(character, species);
   const filmsStr = getCharacterFilms(character, films);
   const starshipsStr = getCharacterStarships(character, starships);
   const vehiclesStr = getCharacterVehicles(character, vehicles);
+
+  useEffect(() => {
+    let newState = {
+      ...state,
+      'films': films,
+      'species': species,
+      'starships': starships,
+      'vehicles': vehicles,
+    }
+    setState(newState);
+  }, [])
 
   return (
     <Layout>
@@ -76,5 +90,5 @@ export default function Profile({ profile, species, films, starships, vehicles }
         />
       </main>
     </Layout>
-  )
+  );
 }

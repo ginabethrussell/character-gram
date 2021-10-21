@@ -1,6 +1,7 @@
-import Lottie from 'react-lottie'
+import Lottie from 'react-lottie';
+import Link from 'next/link';
+
 import animationData from '../lotties/baby-yoda.json'
-import Link from 'next/link'
 import styles from '../styles/404.module.css'
 
 export default function Custom404() {
@@ -25,5 +26,5 @@ export default function Custom404() {
         Home
       </Link>
     </div>
-  )
+  );
 }

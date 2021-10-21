@@ -5,18 +5,19 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
 export default function CharacterCard({ character, species, films, starships, vehicles }) {
+
   return (
-    <Card sx={{ minWidth: 275, maxWidth: 450 }}>
-      <div style={{ padding: '2rem' }}>
+    <Card sx={{ minWidth: 300, maxWidth: 450 }}>
+      <div style={{ padding: "2rem" }}>
         <CardContent>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <CardMedia
               component="img"
               height="200"
               width="200"
-              image='https://i.stack.imgur.com/34AD2.jpg'
+              image="https://i.stack.imgur.com/34AD2.jpg"
               alt="user profile"
-              sx={{ borderRadius: '20px', marginBottom: '1rem', maxWidth: 300 }}
+              sx={{ borderRadius: "20px", marginBottom: "1rem", maxWidth: 300 }}
             />
           </div>
           <Typography variant="h4" component="div" color="#0070f3" gutterBottom>
@@ -67,7 +68,6 @@ export default function CharacterCard({ character, species, films, starships, ve
         </CardContent>
       </div>
     </Card>
-
   );
 }
 

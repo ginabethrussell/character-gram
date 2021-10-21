@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
-import TextField from '@mui/material/TextField'
-import Autocomplete from '@mui/material/Autocomplete'
-import styles from '../styles/searchbar.module.css'
-import Router from 'next/router'
+import React, { useState } from 'react';
+import Router from 'next/router';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 
-export default function Searchbar({ names }) {
+import styles from '../styles/searchbar.module.css';
+import { useAppContext } from '../context/state';
+
+export default function Searchbar() {
   const [value, setValue] = useState(null);
   const [inputValue, setInputValue] = useState('');
+  const { state } = useAppContext();
 
   const handleSelect = () => {
     if (inputValue.length > 0) {
@@ -27,11 +30,12 @@ export default function Searchbar({ names }) {
         }}
         id="character-select"
         sx={{ width: 3 / 4 }}
-        options={names}
+        options={state.names}
         autoHighlight
         renderInput={(params) => <TextField {...params} label="Character" placeholder="Select a character" />}
       />
       <button className={styles.searchButton} onClick={handleSelect}>View</button>
     </div>
-  )
-};
+  );
+}
+
