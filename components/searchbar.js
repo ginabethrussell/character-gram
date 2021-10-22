@@ -4,12 +4,12 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
 import styles from '../styles/searchbar.module.css';
-import { useAppContext } from '../context/state';
+import { useStore } from '../context/Store';
 
 export default function Searchbar() {
   const [value, setValue] = useState(null);
   const [inputValue, setInputValue] = useState('');
-  const { state } = useAppContext();
+  const [store,] = useStore();
 
   const handleSelect = () => {
     if (inputValue.length > 0) {
@@ -30,7 +30,7 @@ export default function Searchbar() {
         }}
         id="character-select"
         sx={{ width: 3 / 4 }}
-        options={state.names}
+        options={store.names}
         autoHighlight
         renderInput={(params) => <TextField {...params} label="Character" placeholder="Select a character" />}
       />

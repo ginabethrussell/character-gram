@@ -8,7 +8,8 @@ import styles from '../styles/Home.module.css';
 import {
   getAllCharacterData,
 } from '../lib/star-wars';
-import { useAppContext } from '../context/state';
+import { useStore } from '../context/Store';
+import { addProfiles, addNames } from '../context/starWarsReducer';
 
 export const getStaticProps = async () => {
   const profileData = await getAllCharacterData();
@@ -34,7 +35,7 @@ const createLinkUrl = (profileUrl) => {
 }
 
 export default function Home({ profiles }) {
-  const { state, setState } = useAppContext();
+  const [, dispatch] = useStore();
 
   useEffect(() => {
     const names = profiles.map(profile => {
@@ -43,14 +44,9 @@ export default function Home({ profiles }) {
         id: profile.url.split('/')[5].toString()
       }
     });
-    let newState = {
-      ...state,
-      'profiles': profiles,
-      'names': names
-    }
-    setState(newState);
-
-  }, [profiles])
+    dispatch(addProfiles(profiles))
+    dispatch(addNames(names));
+  }, [profiles, dispatch])
 
   return (
     <Layout home>

@@ -19,13 +19,11 @@ describe('Charactergram Home Page', () => {
     cy.get(`[data-testid=ArrowDropDownIcon]`).click()
       .type('R2-D2{enter}')
     cy.get('#view-btn').click()
-    cy.wait(6000)
     cy.url().should('include', '/star-wars/people')
   })
 
   it('navigates to the correct profile page by clicking a link', () => {
     cy.contains(`C-3PO`).click()
-    cy.wait(6000)
     cy.get('#character-name').contains('C-3PO')
   })
 })
@@ -48,14 +46,12 @@ describe('Charactergram Profile Page', () => {
 
   it('displays home icon link, returns to home page onclick', () => {
     cy.get(`.iconLinks_homeIcon__2nrOE > path`).click()
-    cy.wait(6000)
     cy.url().should('not.contain', '/people')
     cy.contains('The Star Wars Edition')
   })
 
   it('displays home text link to return to home page', () => {
     cy.get(`.layout_backToHome__knf4J > a`).click()
-    cy.wait(6000)
     cy.url().should('not.contain', '/people')
     cy.contains('The Star Wars Edition')
   })

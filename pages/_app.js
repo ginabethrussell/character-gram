@@ -1,12 +1,13 @@
 import '../styles/globals.css';
-import { AppWrapper } from '../context/state';
+import { StoreProvider } from '../context/Store';
+import { initialState, starWarsReducer } from '../context/starWarsReducer';
 
 function MyApp({ Component, pageProps }) {
 
   return (
-    <AppWrapper>
+    <StoreProvider initialState={initialState} reducer={starWarsReducer}>
       <Component {...pageProps} />
-    </AppWrapper>
+    </StoreProvider>
   );
 }
 

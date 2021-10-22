@@ -49,6 +49,7 @@ App routes include
  - Add Pagination to display character button links in sets of 10 
  - Improve styling and add images
  - Add a Heart Icon to the header and to profile pages to create and save a favorites list
+ - Add a Favorites Page
  - Add details pages for additional data types including planets, vehicles, starships, species, and more
  - Link to these additional details pages from the character profiles
 
