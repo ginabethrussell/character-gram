@@ -72,7 +72,7 @@ export default function Home({ profiles }) {
 
         <div className={styles.grid}>
           {profiles.map(profile => (
-            <Link href={createLinkUrl(profile.url)} key={profile.url}>
+            <Link key={profile.url} href={createLinkUrl(profile.url)} passHref >
               <div className={styles.card} >
                 <h4 className={styles.name}>{profile.name}</h4>
                 <p>&rarr;</p>

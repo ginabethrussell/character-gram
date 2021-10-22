@@ -76,7 +76,7 @@ export default function Profile({ profile, species, films, starships, vehicles }
       'vehicles': vehicles,
     }
     setState(newState);
-  }, [])
+  }, [films, species, starships, vehicles])
 
   return (
     <Layout>

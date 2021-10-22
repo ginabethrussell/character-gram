@@ -25,7 +25,7 @@ describe('Charactergram Home Page', () => {
 
   it('navigates to the correct profile page by clicking a link', () => {
     cy.contains(`C-3PO`).click()
-    cy.wait(8000)
+    cy.wait(6000)
     cy.get('#character-name').contains('C-3PO')
   })
 })
