@@ -41,7 +41,7 @@ App routes include
 - [Starships](https://swapi.dev/api/starships) - 36 starships
 - [Vehicles](https://swapi.dev/api/vehicles/) - 39 vehicles
 
-####The REST API is completely open and free to use.
+##### The REST API is completely open and free to use.
 
 ### Ongoing Development Plans
 
