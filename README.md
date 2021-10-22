@@ -1,6 +1,6 @@
 ## Charactergram - The Star Wars Edition
 
-Charactergram - The Star Wars Edition is a front end single page application which displays Star Wars character data provided by the [SWAPI](https://swapi.dev/) - The Star Wars API. Users can search or browse to see all available characters. Users can select a character to see a character profile page.
+Charactergram - The Star Wars Edition is a front end single page application that displays Star Wars character data provided by [SWAPI](https://swapi.dev/) - The Star Wars API. Users can search or browse to see all available characters. Users can select a character to see a character profile page.
 
 This front end app is built with [Next.js](https://nextjs.org/), React, Javascript, Material UI, Emotion, React Icons, and LottieFiles.
 
@@ -12,10 +12,6 @@ Installation:
 
 `npm install`  
 
-To Run Test Suite:  
-
-`npm test`  
-
 To Start Server:
 
 `npm start`  
@@ -23,6 +19,17 @@ To Start Server:
 To Visit App:
 
 `localhost:3000/`  
+
+### Cypress Integration Tests
+Since Cypress is testing a real Next.js application, it requires the Next.js server to be running prior to starting Cypress. Running your tests against your production code will more closely resemble how your application will behave.
+
+To Run Tests:
+
+`npm run build`
+
+`npm run start`
+
+`npm run cypress`
 
 ### SWAPI API
 
@@ -33,12 +40,13 @@ App routes include
 - [Films](https://swapi.dev/api/films/) - 6 films
 - [Starships](https://swapi.dev/api/starships) - 36 starships
 - [Vehicles](https://swapi.dev/api/vehicles/) - 39 vehicles
-The REST API is completely open and free to use.
+
+####The REST API is completely open and free to use.
 
 ### Ongoing Development Plans
 
  - Add LIGHT & DARK MODE toggle for the Jedi/Sith choice
- - Add Pagination for the Home page butons 
+ - Add Pagination to display character button links in sets of 10 
  - Improve styling and add images
  - Add a Heart Icon to the header and to profile pages to create and save a favorites list
  - Add details pages for additional data types including planets, vehicles, starships, species, and more
