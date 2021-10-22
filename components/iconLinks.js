@@ -7,7 +7,7 @@ export default function IconLinks() {
 
   return (
     <div className={styles.iconWrapper}>
-      <Link href="/">
+      <Link id="home-link" href="/">
         <a>
           <FaHome className={styles.homeIcon} />
         </a>

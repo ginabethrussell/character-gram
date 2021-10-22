@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 export default function CharacterCard({ character, species, films, starships, vehicles }) {
 
   return (
-    <Card sx={{ minWidth: 300, maxWidth: 450 }}>
+    <Card id="profile-card" sx={{ minWidth: 300, maxWidth: 450 }}>
       <div style={{ padding: "2rem" }}>
         <CardContent>
           <div style={{ display: "flex", justifyContent: "center" }}>
@@ -20,7 +20,7 @@ export default function CharacterCard({ character, species, films, starships, ve
               sx={{ borderRadius: "20px", marginBottom: "1rem", maxWidth: 300 }}
             />
           </div>
-          <Typography variant="h4" component="div" color="#0070f3" gutterBottom>
+          <Typography id="character-name" variant="h4" component="div" color="#0070f3" gutterBottom>
             {character.name}
           </Typography>
           <Typography variant="h5" color="text.secondary" gutterBottom>

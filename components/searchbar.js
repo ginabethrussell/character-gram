@@ -34,7 +34,7 @@ export default function Searchbar() {
         autoHighlight
         renderInput={(params) => <TextField {...params} label="Character" placeholder="Select a character" />}
       />
-      <button className={styles.searchButton} onClick={handleSelect}>View</button>
+      <button id="view-btn" className={styles.searchButton} onClick={handleSelect}>View</button>
     </div>
   );
 }
